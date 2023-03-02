@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>标题 | Hexo Cong</title>
+        <meta name="author" content="Cong">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://cong-picgo.oss-cn-shenzhen.aliyuncs.com/images/KC5.jpg">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.1/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.2.1/js/all.min.js"></script>
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+        
+        <script src="https://polyfill.io/v3/polyfill.min.js?features="></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        
+        <style>
+            html .sakana-box{
+                position: fixed;
+                z-index: 100;
+                right: 0;
+                bottom: 0;
+                transform-origin: 100% 100%; /* 从右下开始变换 */
+                display: block;
+            }
+@media (max-width: 768px){html .sakana-box{display: none;}
+</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:2147483647;justify-content:space-between;background:#fff;transition:all 0.3s ease-out;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none">
+    <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+        <div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+            <div>
+                <h2>LOADING...</h2>
+                <p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p>
+                <div>
+                    <img alt="loading" src="/loading.gif">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="showpage" style="display: -not-none">
+                    <div id="menushow">
+                        <nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Hexo Cong</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;归档</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;类别</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+        <a href="/blog">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&ensp;导航页</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menushow" id="phone-menu">
+        <div class="curtain" @click="menushow = !menushow" v-show="menushow"></div>
+        <div class="title" @click="menushow = !menushow">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Hexo Cong</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menushow">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">类别</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                </div>
+            </a>
+            
+            <a href="/blog">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bars fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">导航页</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        <div class="article">
+    <div>
+        <h1>标题 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/3/2
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p><em>斜体文字</em></p>
+<p><em>斜体文字</em></p>
+<p><strong>粗体文字</strong></p>
+<p><strong>粗体文字</strong></p>
+<p><em><strong>粗斜体文字</strong></em></p>
+<p><em><strong>粗斜体文字</strong></em></p>
+<p>分割线</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<p><del>删除线</del></p>
+<ol>
+<li>第一项：<ul>
+<li>第一项嵌套的第一个元素</li>
+<li>第一项嵌套的第二个元素</li>
+</ul>
+</li>
+<li>第二项：<ul>
+<li>第二项嵌套的第一个元素</li>
+<li>第二项嵌套的第二个元素</li>
+</ul>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.baidu.com/">超链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com</a></p>
+<p><img src="https://pic4.zhimg.com/80/v2-a47051e92cf74930bedd7469978e6c08_hd.png" alt="有问题上知乎 图标"></p>
+<table>
+<thead>
+<tr>
+<th>表头1</th>
+<th>表头2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单元格11</td>
+<td>单元格12</td>
+</tr>
+<tr>
+<td>单元格21</td>
+<td>单元格22</td>
+</tr>
+</tbody></table>
+<pre><code class="html">&lt;div style=&quot;代码块&quot;&gt;&lt;/div&gt;
+</code></pre>
+<pre><code class="audio，video标签通用属性">controls属性
+controls:默认的控制面板
+controls muted:音频静音
+controls loop:循环播放
+
+preload属性
+设定音频的预加载方式。
+=“auto”:自动加载，页面加载后载入整个音频
+=“metadata”:自动加载，页面加载后只载入元数据
+=“none”:不自动加载
+
+*poster:视频封面，默认第一帧
+
+</code></pre>
+<pre><code class="mp3">
+本地/网上音乐
+&lt;audio src=&quot;mp3连接&quot; controls=&quot;controls&quot; preload=&quot;auto&quot;&gt;&lt;/audio&gt;
+
+
+网易云音乐
+&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=1964850254&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;
+</code></pre>
+<pre><code class="mp4">
+本地/网上视频
+&lt;video src=&quot;mp4连接&quot; controls=&quot;controls&quot; preload=&quot;auto&quot;&gt;&lt;/viden&gt;
+
+
+Bilibili视频
+src参数
+&amp;high_quality=1 (1=最高画质 0=最低画质)
+&amp;danmaku=0 (1=打开弹幕 0=关闭弹幕)
+&amp;page=1 (第几个视频, 起始下标为 1 (默认值也是为1)就是B站视频, 选集里的, 第几个视频)
+&amp;aid=80433022 (视频ID就是B站的 avxxxx 后面的数字)
+&amp;bvid=BV1GJ411x7h7 (视频的BV)
+&amp;cid=137649199 (这个字段不填也没关系)
+
+height # 高
+width #宽
+allowfullscreen=&quot;true&quot; # 移动端全屏
+sandbox=&quot;allow-top-navigation allow-same-origin allow-forms allow-scripts&quot; # 禁止弹出网页
+&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=80433022&amp;bvid=BV1GJ411x7h7&amp;cid=137649199&amp;page=1&amp;high_quality=1&amp;danmaku=0&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot; danmaku=&quot;0&quot; width=100% height=500&gt; &lt;/iframe&gt;
+
+
+优酷
+&lt;iframe height= 498 width= 510  src=&quot;http://player.youku.com/embed/XNjcyMDU4Njg0&quot;&gt; &lt;/iframe&gt;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+</div>
+                        <footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2023 Hexo Cong
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Cong
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> & <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="showimg">
+                <img id="showimg-content" alt="showimg">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+<script src="/js/function.js"></script>
+<script src="/js/particlex.js"></script>
+
+
+
+        <!--烟花爆炸特效-->
+        <canvas
+    id="fireworks"
+    style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:32767"
+></canvas>
+        <script src="/js/anime.min.js"></script>
+        <script src="/js/fireworks.min.js"></script>
+        <!--流星背景特效-->
+        <canvas
+    id="background"
+    style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"
+></canvas>
+        <script src="/js/background.min.js"></script>
+        <!--Sakana-->
+        <div class="sakana-box"></div>
+        <script src="https://cdn.jsdelivr.net/npm/sakana"></script>
+    	<script>
+// 取消静音
+Sakana.setMute(false);
+
+// 启动
+Sakana.init({
+  el:         '.sakana-box',     // 启动元素 node 或 选择器
+  scale:      0.5,                // 缩放倍数
+  canSwitchCharacter: true,      // 允许换角色
+});
+</script>
+    </body>
+</html>
